@@ -8,15 +8,15 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const { user, setUser } = useContext(UserContext);
   const { type } = useParams();
-
-  if (user) return <Redirect to='/todos' />;
-
+  
   const submitAuth = async () => {
     const response = await userAuth(email, password, type);
     setUser(response);
     setEmail('');
     setPassword('');
   };
+  
+  if (user) return <Redirect to='/todos' />;
 
   return (
     <>

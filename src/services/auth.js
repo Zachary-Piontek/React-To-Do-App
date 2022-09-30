@@ -4,12 +4,12 @@ export function getUser() {
   return client.auth.currentUser;
 }
 
-export async function userAuth(email, type, password) {
+export async function userAuth(email, password, type) {
   let response;
-  if (type === 'sign-up') {
-    response = await client.auth.signUp({ email, password });
-  } else {
+  if (type === 'sign-in') {
     response = await client.auth.signIn({ email, password });
+  } else {
+    response = await client.auth.signUp({ email, password });
   }
 
   return response.user;
