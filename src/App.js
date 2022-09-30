@@ -1,13 +1,17 @@
 
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Auth from './components/Auth';
 import './components/auth.css';
+import Todo from './components/Todos';
 
 function App() {
   return (
     <div className="App">
-      <Route path='/auth/:type' component={Auth} />
+      <Switch>
+        <Route path='/auth/:type' component={Auth} />
+        <Route path='/todos' component={Todo} />
+      </Switch>
     </div>
   );
 }

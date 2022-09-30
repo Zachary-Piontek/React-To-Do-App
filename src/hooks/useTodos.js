@@ -10,6 +10,7 @@ export function useTodos() {
         const data = await getTodos();
         setTodos(data);
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error(e);
       }
     };

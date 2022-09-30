@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { NavLink, Redirect, useParams } from 'react-router-dom';
-import { UserContext } from '../hooks/useContext';
+import { UserContext } from '../hooks/userContext';
 import { userAuth } from '../services/auth';
 
 export default function Auth() {
