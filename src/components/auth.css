@@ -1,0 +1,17 @@
+.auth-page {
+    display: grid;
+    color: red;
+    justify-self: center;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-self: center;
+}
+
+a {
+    grid-template-columns: 1fr;
+    display: grid;
+    color: black;
+}
