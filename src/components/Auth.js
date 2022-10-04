@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { NavLink, Redirect, useParams } from 'react-router-dom';
-import { UserContext } from '../hooks/userContext';
+import { UserContext } from '../context/userContext';
 import { userAuth } from '../services/auth';
 
 export default function Auth() {
@@ -16,7 +16,9 @@ export default function Auth() {
     setPassword('');
   };
   
-  if (user) return <Redirect to='/todos' />;
+  if (user) {
+    return <Redirect to='/todos' />;
+  } 
 
   return (
     <>
@@ -28,7 +30,7 @@ export default function Auth() {
             <input type='text' name='email' value={email} placeholder='email' onChange={e => setEmail(e.target.value)}></input>
           </label>
           <label>
-            <input type='text' name='password' value={password} placeholder='password' onChange={e => setPassword(e.target.value)}></input>
+            <input type='password' name='password' value={password} placeholder='password' onChange={e => setPassword(e.target.value)}></input>
           </label>
           <input type='submit' value='submit'></input>
         </form>

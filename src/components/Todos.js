@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { UserContext } from '../hooks/userContext';
+import { UserContext } from '../context/userContext';
 import { useTodos } from '../hooks/useTodos';
 import { createTodo } from '../services/todo';
 
@@ -11,7 +11,9 @@ export default function Todos() {
   const { user } = useContext(UserContext);
   
 
-  if (!user) return <Redirect to='/auth/sign-in' />;
+  if (user) { 
+    return <Redirect to='/auth/sign-in' />;
+  }
 
   const handleAddedTodo = async () => {
     try {
