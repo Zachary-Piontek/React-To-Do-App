@@ -12,9 +12,8 @@ function App() {
         <Route path='/auth/:type' component={Auth} />
         <Route path='/todos' component={Todos} />
         <Route path = '*'>
-          <Redirect to='/auth/sign-up'></Redirect>
+          <Redirect to='/auth/sign-in'></Redirect>
         </Route>
-        <Redirect to='/auth/sign-up' />
       </Switch>
     </div>
   );

@@ -4,21 +4,23 @@ import { UserContext } from '../context/userContext';
 import { userAuth } from '../services/auth';
 
 export default function Auth() {
+  const { type } = useParams();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { user, setUser } = useContext(UserContext);
-  const { type } = useParams();
+
+  if (user) {
+    return <Redirect to='/todos' />;
+  } 
   
-  const submitAuth = async () => {
+  const submitAuth = async (e) => {
+    e.preventDefault();
     const response = await userAuth(email, password, type);
     setUser(response);
     setEmail('');
     setPassword('');
   };
   
-  if (user) {
-    return <Redirect to='/todos' />;
-  } 
 
   return (
     <>
@@ -27,10 +29,14 @@ export default function Auth() {
         <NavLink id='sign-up' to='/auth/sign-up'>Sign Up</NavLink>
         <form onSubmit={submitAuth}>
           <label>
-            <input type='text' name='email' value={email} placeholder='email' onChange={e => setEmail(e.target.value)}></input>
+            <input className="input" type='text' placeholder='your email' value={email} onChange={(e) => {
+              setEmail(e.target.value);
+            }} />
           </label>
           <label>
-            <input type='password' name='password' value={password} placeholder='password' onChange={e => setPassword(e.target.value)}></input>
+            <input className="input" type='password' placeholder='password' value={password} onChange={(e) => {
+              setPassword(e.target.value);
+            }} />
           </label>
           <input type='submit' value='submit'></input>
         </form>
