@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { UserContext } from '../context/userContext';
 import { useTodos } from '../hooks/useTodos';
-import { signOut } from '../services/auth.js';
+import { signOut } from '../services/auth';
 import { createTodo } from '../services/todo';
 
 
